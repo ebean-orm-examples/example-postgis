@@ -42,6 +42,13 @@ public class PersonTest {
       System.out.println(person.getPoint());
     }
 
+    List<Person> list1 = ebeanServer.find(Person.class)
+        .where()
+        .raw("st_within(st_pointfromwkb(st_point(?, ?), 4674), poly)", 1.9, 1.9)
+        .findList();
+
+    System.out.println(list1);
+
 
     Point point = new Point("SRID=4674;POINT(2.8 1.7)");
     Polygon poly =  new Polygon("SRID=4674;POLYGON((2 2, 2 -2, -2 -2, -2 2, 2 2))");
