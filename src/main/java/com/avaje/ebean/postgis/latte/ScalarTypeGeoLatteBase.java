@@ -7,12 +7,7 @@ import com.avaje.ebeaninternal.server.type.ScalarType;
 import com.avaje.ebeanservice.docstore.api.mapping.DocPropertyType;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import org.geolatte.geom.ByteOrder;
 import org.geolatte.geom.Geometry;
-import org.geolatte.geom.MultiPolygon;
-import org.geolatte.geom.Point;
-import org.geolatte.geom.codec.Wkb;
-import org.geolatte.geom.codec.WkbEncoder;
 import org.geolatte.geom.codec.Wkt;
 import org.postgis.PGgeometry;
 import org.postgis.PGgeometryLW;
@@ -24,6 +19,30 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 abstract class ScalarTypeGeoLatteBase<T extends Geometry> implements ScalarType<T> {
+
+  private final int jdbcType;
+
+  private final Class<T> cls;
+
+  ScalarTypeGeoLatteBase(int jdbcType, Class<T> cls) {
+    this.jdbcType = jdbcType;
+    this.cls = cls;
+  }
+
+  @Override
+  public boolean isJdbcNative() {
+    return true;
+  }
+
+  @Override
+  public int getJdbcType() {
+    return jdbcType;
+  }
+
+  @Override
+  public Class<T> getType() {
+    return cls;
+  }
 
   @Override
   public void bind(DataBind bind, T value) throws SQLException {
@@ -81,17 +100,6 @@ abstract class ScalarTypeGeoLatteBase<T extends Geometry> implements ScalarType<
   public int getLength() {
     return 0;
   }
-
-  @Override
-  public boolean isJdbcNative() {
-    return false;
-  }
-
-  @Override
-  public int getJdbcType() {
-    return 0;
-  }
-
 
   @Override
   public void loadIgnore(DataReader reader) {

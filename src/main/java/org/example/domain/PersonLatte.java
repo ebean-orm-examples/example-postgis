@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="r_person")
+@Table(name="r2_person")
 public class PersonLatte extends BaseEntity {
 
   String name;

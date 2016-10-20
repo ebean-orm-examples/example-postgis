@@ -8,9 +8,7 @@ import com.avaje.ebeanservice.docstore.api.mapping.DocPropertyType;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import org.postgis.Geometry;
-import org.postgis.MultiPolygon;
 import org.postgis.PGgeometryLW;
-import org.postgis.Point;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -20,6 +18,14 @@ import java.sql.Types;
 
 abstract class ScalarTypePgisBase<T extends Geometry> implements ScalarType<T> {
 
+  private final int jdbcType;
+
+  private final Class<T> cls;
+
+  ScalarTypePgisBase(int jdbcType, Class<T> cls) {
+    this.jdbcType = jdbcType;
+    this.cls = cls;
+  }
 
   @Override
   public void bind(DataBind bind, T value) throws SQLException {
@@ -33,6 +39,7 @@ abstract class ScalarTypePgisBase<T extends Geometry> implements ScalarType<T> {
 
 
   @Override
+  @SuppressWarnings("unchecked")
   public T read(DataReader reader) throws SQLException {
 
     Object object = reader.getObject();
@@ -42,6 +49,22 @@ abstract class ScalarTypePgisBase<T extends Geometry> implements ScalarType<T> {
     PGgeometryLW gro = (PGgeometryLW)object;
     Geometry pts = gro.getGeometry();
     return (T)pts;
+  }
+
+
+  @Override
+  public boolean isJdbcNative() {
+    return true;
+  }
+
+  @Override
+  public int getJdbcType() {
+    return jdbcType;
+  }
+
+  @Override
+  public Class<T> getType() {
+    return cls;
   }
 
   @Override
@@ -73,17 +96,6 @@ abstract class ScalarTypePgisBase<T extends Geometry> implements ScalarType<T> {
   public int getLength() {
     return 0;
   }
-
-  @Override
-  public boolean isJdbcNative() {
-    return false;
-  }
-
-  @Override
-  public int getJdbcType() {
-    return 0;
-  }
-
 
   @Override
   public void loadIgnore(DataReader reader) {

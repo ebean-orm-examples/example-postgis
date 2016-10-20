@@ -1,12 +1,12 @@
 package com.avaje.ebean.postgis.latte;
 
+import com.avaje.ebean.config.dbplatform.ExtraDbTypes;
 import org.geolatte.geom.MultiPolygon;
 
 public class ScalarTypeGeoLatteMultiPolygon extends ScalarTypeGeoLatteBase<MultiPolygon> {
 
-  @Override
-  public Class<MultiPolygon> getType() {
-    return MultiPolygon.class;
+  public ScalarTypeGeoLatteMultiPolygon() {
+    super(ExtraDbTypes.MULTIPOLYGON, MultiPolygon.class);
   }
 
 }

@@ -23,6 +23,7 @@ public class PersonTest {
 
     ServerConfig serverConfig = new ServerConfig();
     serverConfig.setName("db");
+    serverConfig.setDefaultServer(true);
     serverConfig.loadFromProperties();
     serverConfig.addClass(ScalarTypePgisPoint.class);
     serverConfig.addClass(ScalarTypePgisPolygon.class);
