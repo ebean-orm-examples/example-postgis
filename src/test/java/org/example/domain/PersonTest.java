@@ -3,11 +3,11 @@ package org.example.domain;
 import com.avaje.ebean.EbeanServer;
 import com.avaje.ebean.EbeanServerFactory;
 import com.avaje.ebean.config.ServerConfig;
-import com.avaje.ebean.postgis.latte.ScalarTypeGeoLatteMultiPolygon;
-import com.avaje.ebean.postgis.ScalarTypePGpoint;
-import com.avaje.ebean.postgis.ScalarTypePgisMultiPolygon;
-import com.avaje.ebean.postgis.ScalarTypePgisPoint;
-import com.avaje.ebean.postgis.ScalarTypePgisPolygon;
+//import com.avaje.ebean.postgis.latte.ScalarTypeGeoLatteMultiPolygon;
+//import com.avaje.ebean.postgis.ScalarTypePGpoint;
+//import com.avaje.ebean.postgis.ScalarTypePgisMultiPolygon;
+//import com.avaje.ebean.postgis.ScalarTypePgisPoint;
+//import com.avaje.ebean.postgis.ScalarTypePgisPolygon;
 import org.postgis.Point;
 import org.postgis.Polygon;
 import org.testng.annotations.Test;
@@ -25,12 +25,6 @@ public class PersonTest {
     serverConfig.setName("db");
     serverConfig.setDefaultServer(true);
     serverConfig.loadFromProperties();
-    serverConfig.addClass(ScalarTypePgisPoint.class);
-    serverConfig.addClass(ScalarTypePgisPolygon.class);
-    serverConfig.addClass(ScalarTypePgisMultiPolygon.class);
-
-    serverConfig.addClass(ScalarTypeGeoLatteMultiPolygon.class);
-    serverConfig.addClass(ScalarTypePGpoint.class);
 
     serverConfig.addClass(Person.class);
     serverConfig.addClass(PersonLatte.class);

@@ -16,15 +16,17 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.avaje.ebean</groupId>
+            <artifactId>ebean-postgis</artifactId>
+            <version>1.1.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- When this dependency is added Ebean auto detects that
+             and adds scalar type support for geolatte types -->
+        <dependency>
             <groupId>org.geolatte</groupId>
             <artifactId>geolatte-geom</artifactId>
             <version>1.0.6</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.realityforge.geolatte.jpa</groupId>
-            <artifactId>geolatte-geom-jpa</artifactId>
-            <version>0.3</version>
         </dependency>
 
         <dependency>
@@ -33,11 +35,13 @@
             <version>9.4.1211.jre7</version>
         </dependency>
 
-        <dependency>
-            <groupId>net.postgis</groupId>
-            <artifactId>postgis-jdbc</artifactId>
-            <version>2.2.1</version>
-        </dependency>
+        <!-- Brought in by ebean-postgis -->
+
+        <!--<dependency>-->
+            <!--<groupId>net.postgis</groupId>-->
+            <!--<artifactId>postgis-jdbc</artifactId>-->
+            <!--<version>2.2.1</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.avaje.ebean</groupId>
