@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="r_person")
+@Table(name="person_geo")
 public class Person extends BaseEntity {
 
   String name;

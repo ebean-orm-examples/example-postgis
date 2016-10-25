@@ -17,17 +17,26 @@
 
         <dependency>
             <groupId>org.avaje.ebean</groupId>
-            <artifactId>ebean-postgis</artifactId>
-            <version>1.1.1-SNAPSHOT</version>
+            <artifactId>ebean</artifactId>
+            <version>8.6.1</version>
         </dependency>
 
-        <!-- When this dependency is added Ebean auto detects that
-             and adds scalar type support for geolatte types -->
+        <!--
+             by adding this dependency, Ebean automatically registers the
+             scalar types for postgis and geolatte
+          -->
         <dependency>
-            <groupId>org.geolatte</groupId>
-            <artifactId>geolatte-geom</artifactId>
-            <version>1.0.6</version>
+            <groupId>org.avaje.ebean</groupId>
+            <artifactId>ebean-postgis</artifactId>
+            <version>0.1.1</version>
         </dependency>
+
+        <!-- optionally use geolatte-geom types -->
+        <!--<dependency>-->
+            <!--<groupId>org.geolatte</groupId>-->
+            <!--<artifactId>geolatte-geom</artifactId>-->
+            <!--<version>1.0.6</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -36,18 +45,11 @@
         </dependency>
 
         <!-- Brought in by ebean-postgis -->
-
         <!--<dependency>-->
             <!--<groupId>net.postgis</groupId>-->
             <!--<artifactId>postgis-jdbc</artifactId>-->
             <!--<version>2.2.1</version>-->
         <!--</dependency>-->
-
-        <dependency>
-            <groupId>org.avaje.ebean</groupId>
-            <artifactId>ebean</artifactId>
-            <version>8.5.2-SNAPSHOT</version>
-        </dependency>
 
         <!-- support for query beans -->
         <dependency>
@@ -96,7 +98,7 @@
                 <configuration>
                     <tiles>
                         <tile>org.avaje.tile:java-compile:1.1</tile>
-                        <tile>org.avaje.tile:ebean-enhancement:1.4</tile>
+                        <tile>org.avaje.ebean.tile:enhancement:1.1</tile>
                     </tiles>
                 </configuration>
             </plugin>
