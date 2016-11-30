@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.avaje.ebean</groupId>
             <artifactId>ebean</artifactId>
-            <version>9.2.1</version>
+            <version>[9.2.1]</version>
         </dependency>
 
         <!--
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.avaje.ebean</groupId>
             <artifactId>ebean-postgis</artifactId>
-            <version>0.1.1</version>
+            <version>[0.1.1]</version>
         </dependency>
 
         <!-- optionally use geolatte-geom types -->
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4.1211.jre7</version>
+            <version>[9.4.1211.jre7]</version>
         </dependency>
 
         <!-- Brought in by ebean-postgis -->
@@ -55,33 +55,33 @@
         <dependency>
             <groupId>org.avaje.ebean</groupId>
             <artifactId>ebean-querybean</artifactId>
-            <version>8.4.1</version>
+            <version>[8.4.1]</version>
         </dependency>
 
         <!-- java annotation processor to generate query beans -->
         <dependency>
             <groupId>org.avaje.ebean</groupId>
             <artifactId>querybean-generator</artifactId>
-            <version>8.1.4</version>
+            <version>[8.1.4]</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.20</version>
+            <version>[1.7.20]</version>
         </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.1.6</version>
+            <version>[1.1.6]</version>
         </dependency>
 
         <dependency>
             <groupId>org.avaje.composite</groupId>
             <artifactId>composite-testing</artifactId>
-            <version>3.1</version>
+            <version>[3.1]</version>
             <scope>test</scope>
         </dependency>
 
