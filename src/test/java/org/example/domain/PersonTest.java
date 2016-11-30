@@ -34,5 +34,11 @@ public class PersonTest {
     p.setPoint(point);
     p.setPoly(poly);
     p.save();
+
+    List<Person> list2 = Ebean.find(Person.class).findList();
+    for (Person person : list2) {
+      System.out.println(person.getPoint());
+    }
+
   }
 }
